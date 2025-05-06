@@ -75,4 +75,4 @@ Feel free to reach out with any questions or feedback!
 
 ## License
 
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+This project is just a self made website
