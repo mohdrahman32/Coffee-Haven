@@ -464,7 +464,7 @@
         // Fetch and Display Menu Items
         async function loadMenuItems() {
             try {
-                const response = await fetch('/menu_details.json');
+                const response = await fetch('menu_details.json');
                 const data = await response.json();
 
                 const categoryMap = {
