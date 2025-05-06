@@ -1,0 +1,486 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Coffee Haven - Contact</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Lora:wght@700&family=Raleway:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/hover.css/2.3.1/css/hover-min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
+    <style>
+        body { font-family: 'Raleway', sans-serif; }
+        h1, h2, h3 { font-family: 'Lora', serif; }
+        .nav-sticky { position: sticky; top: 0; z-index: 100; }
+        .card:hover { transform: scale(1.05); transition: transform 0.3s; }
+        /* Pop-up Form Styles */
+        .popup-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.6);
+            display: none;
+            align-items: center;
+            justify-content: center;
+            z-index: 200;
+        }
+        .popup-card {
+            background: #F5E6CC;
+            padding: 2rem;
+            border-radius: 0.5rem;
+            width: 90%;
+            max-width: 400px;
+            position: relative;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        .close-btn {
+            position: absolute;
+            top: 0.5rem;
+            right: 0.5rem;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: #4B3F2F;
+        }
+        .form-input {
+            width: 100%;
+            padding: 0.5rem;
+            margin-bottom: 1rem;
+            border: 1px solid #4B3F2F;
+            border-radius: 0.25rem;
+        }
+        .error-message {
+            color: red;
+            font-size: 0.875rem;
+            margin-bottom: 1rem;
+            display: none;
+        }
+        @media (max-width: 768px) {
+            .signup-btn, .profile-btn {
+                order: 2;
+                margin-left: 0.5rem;
+            }
+        }
+        /* Contact Card Styles */
+        .contact-card {
+            position: relative;
+            background: #F5E6CC;
+            padding: 2rem;
+            border-radius: 0.5rem;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+        .contact-icon {
+            position: relative;
+            display: inline-block;
+        }
+        .contact-icon i {
+            font-size: 3rem;
+            color: #4B3F2F;
+        }
+        .contact-icon svg {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 80px;
+            height: 80px;
+        }
+        .contact-icon .neon-circle {
+            fill: none;
+            stroke: #355E3B;
+            stroke-width: 4;
+            stroke-dasharray: 251;
+            stroke-dashoffset: 251;
+            filter: drop-shadow(0 0 5px #355E3B);
+        }
+        .contact-card:hover .neon-circle {
+            animation: revolve 2s ease-in-out infinite;
+        }
+        @keyframes revolve {
+            0% { stroke-dashoffset: 251; }
+            50% { stroke-dashoffset: 0; }
+            100% { stroke-dashoffset: -251; }
+        }
+        /* Contact Form Styles */
+        .contact-form input, .contact-form textarea {
+            border: 1px solid #4B3F2F;
+            border-radius: 0.25rem;
+            padding: 0.75rem;
+            margin-bottom: 1rem;
+            width: 100%;
+        }
+        .contact-form textarea {
+            resize: vertical;
+            min-height: 150px;
+        }
+        /* Map Styles */
+        .map-container {
+            border: 4px solid #F5E6CC;
+            border-radius: 0.5rem;
+            overflow: hidden;
+        }
+    </style>
+</head>
+<body class="bg-cream-100 text-gray-800">
+    <!-- Sign Up Pop-up -->
+    <div class="popup-overlay" id="signup-popup">
+        <div class="popup-card">
+            <i class="fas fa-times close-btn" onclick="closePopup('signup-popup')"></i>
+            <h2 class="text-2xl font-bold mb-4 text-brown-700">Sign Up</h2>
+            <div class="error-message" id="signup-error"></div>
+            <input type="text" id="signup-username" class="form-input" placeholder="Username" required>
+            <input type="text" id="signup-name" class="form-input" placeholder="Name" required>
+            <input type="text" id="signup-address" class="form-input" placeholder="Address" required>
+            <input type="password" id="signup-password" class="form-input" placeholder="Password" required>
+            <input type="password" id="signup-repassword" class="form-input" placeholder="Re-enter Password" required>
+            <button onclick="handleSignup()" class="bg-green-700 text-white py-2 px-4 rounded w-full hover:bg-green-600">Sign Up</button>
+            <p class="text-center mt-2">Already have an account? <a href="#" onclick="switchToLogin()" class="text-green-700 hover:underline">Login</a></p>
+        </div>
+    </div>
+
+    <!-- Login Pop-up -->
+    <div class="popup-overlay" id="login-popup">
+        <div class="popup-card">
+            <i class="fas fa-times close-btn" onclick="closePopup('login-popup')"></i>
+            <h2 class="text-2xl font-bold mb-4 text-brown-700">Login</h2>
+            <div class="error-message" id="login-error"></div>
+            <input type="text" id="login-username" class="form-input" placeholder="Username" required>
+            <input type="password" id="login-password" class="form-input" placeholder="Password" required>
+            <button onclick="handleLogin()" class="bg-green-700 text-white py-2 px-4 rounded w-full hover:bg-green-600">Login</button>
+            <p class="text-center mt-2">Don't have an account? <a href="#" onclick="switchToSignup()" class="text-green-700 hover:underline">Sign Up</a></p>
+        </div>
+    </div>
+
+    <!-- Profile Pop-up -->
+    <div class="popup-overlay" id="profile-popup">
+        <div class="popup-card">
+            <i class="fas fa-times close-btn" onclick="closePopup('profile-popup')"></i>
+            <h2 class="text-2xl font-bold mb-4 text-brown-700">Profile</h2>
+            <p><strong>Username:</strong> <span id="profile-username"></span></p>
+            <p><strong>Name:</strong> <span id="profile-name"></span></p>
+            <p><strong>Address:</strong> <span id="profile-address"></span></p>
+            <button onclick="handleLogout()" class="bg-brown-700 text-black py-2 px-4 rounded w-full hover:bg-green-700 mt-4">Logout</button>
+        </div>
+    </div>
+
+    <!-- Navigation Bar (Same as about.html) -->
+    <nav class="bg-cream-200 py-4 nav-sticky shadow-md" data-aos="fade-down" data-aos-duration="1000">
+        <div class="container mx-auto flex justify-between items-center px-4">
+            <h1 class="text-2xl text-brown-700 font-bold">Coffee Haven</h1>
+            <div class="flex items-center">
+                <div class="hidden md:flex space-x-6 mr-4">
+                    <a href="index.html" class="text-gray-800 hover:text-green-700">Home</a>
+                    <a href="menu.html" class="text-gray-800 hover:text-green-700">Menu</a>
+                    <a href="cart.html" class="text-gray-800 hover:text-green-700">Cart<span id="cart-plus-one"></span></a>
+                    <a href="about.html" class="text-gray-800 hover:text-green-700">About</a>
+                    <a href="contact.html" class="text-gray-800 hover:text-green-700">Contact</a>
+                </div>
+                <button id="signup-btn" class="signup-btn bg-brown-700 text-cream-200 py-2 px-4 rounded hover:bg-green-700 md:order-0" onclick="showPopup('signup-popup')">Sign Up</button>
+                <button id="profile-btn" class="profile-btn hidden text-2xl text-brown-700 hover:text-green-700 md:order-0" onclick="showProfile()"><i class="fas fa-user"></i></button>
+                <div class="md:hidden ml-2">
+                    <i class="fas fa-bars text-2xl cursor-pointer" onclick="toggleMenu()"></i>
+                </div>
+            </div>
+        </div>
+        <div id="mobile-menu" class="hidden md:hidden bg-cream-200 px-4 py-2">
+            <a href="index.html" class="block py-2 text-gray-800 hover:text-green-700">Home</a>
+            <a href="menu.html" class="block py-2 text-gray-800 hover:text-green-700">Menu</a>
+            <a href="cart.html" class="block py-2 text-gray-800 hover:text-green-700">Cart<span id="cart-plus-one-mobile"></span></a>
+            <a href="about.html" class="block py-2 text-gray-800 hover:text-green-700">About</a>
+            <a href="contact.html" class="block py-2 text-gray-800 hover:text-green-700">Contact</a>
+        </div>
+    </nav>
+
+    <!-- Contact Header -->
+    <section class="py-12 bg-cream-200 text-center" data-aos="fade-up" data-aos-duration="800">
+        <div class="container mx-auto px-4">
+            <h1 class="text-5xl font-bold mb-4"><i class="fas fa-envelope mr-2"></i>Contact Us</h1>
+            <p class="text-xl">We’d love to hear from you! Reach out with any questions or feedback.</p>
+        </div>
+    </section>
+
+    <!-- Contact Information Section -->
+    <section class="py-12 bg-white">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-8" data-aos="fade-up">Get in Touch</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <!-- Address Card -->
+                <div class="contact-card card" data-aos="fade-up" data-aos-delay="100">
+                    <h3 class="text-xl font-bold mb-4 text-brown-700">Our Address</h3>
+                    <div class="contact-icon">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <svg>
+                            <circle class="neon-circle" cx="40" cy="40" r="38"/>
+                        </svg>
+                    </div>
+                    <p class="text-gray-600 mt-4">123 Coffee St, New York, NY 10001</p>
+                </div>
+                <!-- Email & Phone Card -->
+                <div class="contact-card card" data-aos="fade-up" data-aos-delay="200">
+                    <h3 class="text-xl font-bold mb-4 text-brown-700">Email & Phone</h3>
+                    <div class="contact-icon">
+                        <i class="fas fa-envelope"></i>
+                        <svg>
+                            <circle class="neon-circle" cx="40" cy="40" r="38"/>
+                        </svg>
+                    </div>
+                    <p class="text-gray-600 mt-4">Email: <a href="mailto:info@coffeehaven.com" class="text-green-700 hover:underline">info@coffeehaven.com</a></p>
+                    <p class="text-gray-600">Phone: <a href="tel:+5551234567" class="text-green-700 hover:underline">(555) 123-4567</a></p>
+                </div>
+                <!-- Social Media Card -->
+                <div class="contact-card card" data-aos="fade-up" data-aos-delay="300">
+                    <h3 class="text-xl font-bold mb-4 text-brown-700">Follow Us</h3>
+                    <div class="contact-icon">
+                        <i class="fas fa-share-alt"></i>
+                        <svg>
+                            <circle class="neon-circle" cx="40" cy="40" r="38"/>
+                        </svg>
+                    </div>
+                    <div class="flex justify-center space-x-4 mt-4">
+                        <a href="#" class="text-2xl text-brown-700 hover:text-green-700"><i class="fab fa-facebook"></i></a>
+                        <a href="#" class="text-2xl text-brown-700 hover:text-green-700"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="text-2xl text-brown-700 hover:text-green-700"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="text-2xl text-brown-700 hover:text-green-700"><i class="fab fa-linkedin"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Form Section -->
+    <section class="py-12 bg-cream-100" data-aos="fade-up" data-aos-duration="800">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-8">Send Us a Message</h2>
+            <div class="max-w-lg mx-auto bg-cream-200 p-6 rounded-lg shadow-md">
+                <div class="contact-form">
+                    <input type="text" id="contact-name" placeholder="Your Name" required>
+                    <input type="email" id="contact-email" placeholder="Your Email" required>
+                    <textarea id="contact-message" placeholder="Your Message" required></textarea>
+                    <button onclick="submitContactForm()" class="bg-green-700 text-white py-2 px-4 rounded w-full hover:bg-green-600 hvr-pulse">Submit</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Map Section -->
+    <section class="py-12 bg-white" data-aos="zoom-in" data-aos-duration="800">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-8">Find Us</h2>
+            <div class="map-container">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3022.241265588418!2d-73.986614684594!3d40.758896979326!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0:0x0!2zNDDCsDQ1JzMyLjAiTiA3M8KwNTknMTEuOCJX!5e0!3m2!1sen!2sus!4v1630000000000!5m2!1sen!2sus" width="100%" height="400" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+            </div>
+        </div>
+    </section>
+
+    <!-- Business Hours Section -->
+    <section class="py-12 bg-cream-100" data-aos="fade-up" data-aos-duration="800">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-8">Business Hours</h2>
+            <div class="max-w-md mx-auto bg-cream-200 p-6 rounded-lg shadow-md text-center">
+                <p class="text-gray-600 mb-2"><strong>Monday – Friday:</strong> 7:00 AM – 7:00 PM</p>
+                <p class="text-gray-600 mb-2"><strong>Saturday:</strong> 8:00 AM – 6:00 PM</p>
+                <p class="text-gray-600"><strong>Sunday:</strong> 8:00 AM – 4:00 PM</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer (Same as about.html) -->
+    <footer class="bg-brown-800 text-cream-200 py-8" data-aos="slide-up" data-aos-duration="800">
+        <div class="container mx-auto px-4 grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div>
+                <h3 class="text-xl font-bold mb-4">Contact Us</h3>
+                <p>Email: info@coffeehaven.com</p>
+                <p>Phone: (555) 123-4567</p>
+                <p>Address: 123 Coffee St, NY</p>
+            </div>
+            <div>
+                <h3 class="text-xl font-bold mb-4">Follow Us</h3>
+                <div class="flex space-x-4">
+                    <a href="#" class="text-2xl hover:text-green-700"><i class="fab fa-facebook"></i></a>
+                    <a href="#" class="text-2xl hover:text-green-700"><i class="fab fa-instagram"></i></a>
+                    <a href="#" class="text-2xl hover:text-green-700"><i class="fab fa-twitter"></i></a>
+                </div>
+            </div>
+            <div>
+                <h3 class="text-xl font-bold mb-2">Quick Links</h3>
+                <a href="index.html" class="block hover:text-green-700">Home</a>
+                <a href="menu.html" class="block hover:text-green-700">Menu</a>
+                <a href="cart.html" class="block hover:text-green-700">Cart</a>
+                <a href="about.html" class="block hover:text-green-700">About</a>
+                <a href="contact.html" class="block hover:text-green-700">Contact</a>
+            </div>
+        </div>
+        <p class="text-center mt-8">© 2025 Coffee Haven</p>
+    </footer>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        // Initialize AOS
+        AOS.init({
+            duration: 800,
+            once: true
+        });
+
+        // Toggle Mobile Menu
+        function toggleMenu() {
+            const menu = document.getElementById('mobile-menu');
+            menu.classList.toggle('hidden');
+        }
+
+        // Pop-up Functions
+        function showPopup(popupId) {
+            const popup = document.getElementById(popupId);
+            if (popup) {
+                popup.style.display = 'flex';
+            }
+        }
+
+        function closePopup(popupId) {
+            const popup = document.getElementById(popupId);
+            const error = document.getElementById(`${popupId}-error`);
+            if (popup) {
+                popup.style.display = 'none';
+            }
+            if (error) {
+                error.style.display = 'none';
+            }
+            if (popupId === 'signup-popup') {
+                document.getElementById('signup-username').value = '';
+                document.getElementById('signup-name').value = '';
+                document.getElementById('signup-address').value = '';
+                document.getElementById('signup-password').value = '';
+                document.getElementById('signup-repassword').value = '';
+            } else if (popupId === 'login-popup') {
+                document.getElementById('login-username').value = '';
+                document.getElementById('login-password').value = '';
+            }
+        }
+
+        function switchToLogin() {
+            closePopup('signup-popup');
+            setTimeout(() => showPopup('login-popup'), 100);
+        }
+
+        function switchToSignup() {
+            closePopup('login-popup');
+            setTimeout(() => showPopup('signup-popup'), 100);
+        }
+
+        // User Management
+        function handleSignup() {
+            const username = document.getElementById('signup-username').value.trim();
+            const name = document.getElementById('signup-name').value.trim();
+            const address = document.getElementById('signup-address').value.trim();
+            const password = document.getElementById('signup-password').value;
+            const repassword = document.getElementById('signup-repassword').value;
+            const error = document.getElementById('signup-error');
+
+            if (!username || !name || !address || !password || !repassword) {
+                error.textContent = 'All fields are required.';
+                error.style.display = 'block';
+                return;
+            }
+            if (password !== repassword) {
+                error.textContent = 'Passwords do not match.';
+                error.style.display = 'block';
+                return;
+            }
+
+            const users = JSON.parse(localStorage.getItem('users') || '{}');
+            if (users[username]) {
+                error.textContent = 'Username already exists.';
+                error.style.display = 'block';
+                return;
+            }
+
+            users[username] = { name, address, password };
+            localStorage.setItem('users', JSON.stringify(users));
+            localStorage.setItem('currentUser', username);
+            closePopup('signup-popup');
+            updateNavBar();
+        }
+
+        function handleLogin() {
+            const username = document.getElementById('login-username').value.trim();
+            const password = document.getElementById('login-password').value;
+            const error = document.getElementById('login-error');
+
+            const users = JSON.parse(localStorage.getItem('users') || '{}');
+            if (!users[username] || users[username].password !== password) {
+                error.textContent = 'Invalid username or password.';
+                error.style.display = 'block';
+                return;
+            }
+
+            localStorage.setItem('currentUser', username);
+            closePopup('login-popup');
+            updateNavBar();
+        }
+
+        function handleLogout() {
+            localStorage.removeItem('currentUser');
+            closePopup('profile-popup');
+            updateNavBar();
+        }
+
+        function showProfile() {
+            const username = localStorage.getItem('currentUser');
+            const users = JSON.parse(localStorage.getItem('users') || '{}');
+            const user = users[username];
+
+            if (user) {
+                document.getElementById('profile-username').textContent = username;
+                document.getElementById('profile-name').textContent = user.name;
+                document.getElementById('profile-address').textContent = user.address;
+                showPopup('profile-popup');
+            }
+        }
+
+        function updateNavBar() {
+            const signupBtn = document.getElementById('signup-btn');
+            const profileBtn = document.getElementById('profile-btn');
+            const currentUser = localStorage.getItem('currentUser');
+
+            if (signupBtn && profileBtn) {
+                if (currentUser) {
+                    signupBtn.style.display = 'none';
+                    profileBtn.style.display = 'inline-block';
+                } else {
+                    signupBtn.style.display = 'inline-block';
+                    profileBtn.style.display = 'none';
+                }
+            }
+        }
+
+        // Contact Form Submission
+        function submitContactForm() {
+            const name = document.getElementById('contact-name').value.trim();
+            const email = document.getElementById('contact-email').value.trim();
+            const message = document.getElementById('contact-message').value.trim();
+
+            if (!name || !email || !message) {
+                alert('Please fill out all fields.');
+                return;
+            }
+
+            // Placeholder for form submission logic (e.g., send to server)
+            console.log('Form submitted:', { name, email, message });
+
+            // Clear form
+            document.getElementById('contact-name').value = '';
+            document.getElementById('contact-email').value = '';
+            document.getElementById('contact-message').value = '';
+            alert('Thank you for your message! We’ll get back to you soon.');
+        }
+
+        // Update nav bar on page load
+        document.addEventListener('DOMContentLoaded', () => {
+            updateNavBar();
+        });
+    </script>
+</body>
+</html>

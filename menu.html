@@ -1,0 +1,615 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Coffee Haven - Menu</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Lora:wght@700&family=Raleway:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
+    <style>
+        body { font-family: 'Raleway', sans-serif; }
+        h1, h2, h3 { font-family: 'Lora', serif; }
+        .nav-sticky { position: sticky; top: 0; z-index: 100; }
+        .menu-item { display: none; position: relative; }
+        .menu-item.show { display: block; }
+        .menu-item::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to bottom, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.2));
+            z-index: 1;
+            border-radius: 0.5rem;
+        }
+        .menu-item-content { position: relative; z-index: 2; color: white; }
+        .initial-content { display: block; }
+        .full-details { display: none; overflow-y: auto; max-height: 100%; text-align: left; }
+        .fade-out { animation: fadeOut 0.3s ease forwards; }
+        .fade-in { animation: fadeIn 0.3s ease forwards; }
+        .read-more-btn:hover, .cart-btn:hover { transform: scale(1.05); transition: transform 0.3s; }
+        @media (max-width: 640px) {
+            #menu-items { max-width: 16rem; margin-left: auto; margin-right: auto; }
+        }
+        @keyframes fadeOut { from { opacity: 1; } to { opacity: 0; } }
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+        /* Filter Section Styles */
+        .menu-btn { 
+            width: 12rem; 
+            height: 12rem; 
+            display: flex; 
+            flex-direction: column; 
+            justify-content: center; 
+            align-items: center; 
+            transition: all 0.5s ease; 
+        }
+        .menu-btn-content { 
+            transition: transform 0.5s ease; 
+        }
+        .menu-btn.flipped .menu-btn-content { 
+            transform: rotateY(180deg); 
+        }
+        .menu-btn .initial-content { 
+            display: flex; 
+            flex-direction: column; 
+            align-items: center; 
+        }
+        .menu-btn .flipped-content { 
+            display: none; 
+            transform: rotateY(180deg); 
+        }
+        .menu-btn.flipped .initial-content { 
+            display: none; 
+        }
+        .menu-btn.flipped .flipped-content { 
+            display: flex; 
+        }
+        .category-btn { 
+            display: none; 
+            opacity: 0; 
+            transform: scale(0); 
+            transition: all 0.3s ease; 
+        }
+        .category-btn.show { 
+            display: inline-block; 
+            opacity: 1; 
+            transform: scale(1); 
+        }
+        .category-btn.active { 
+            background-color: #355E3B; 
+            color: #F5E6CC; 
+        }
+        /* Pop-up Form Styles */
+        .popup-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.6);
+            display: none;
+            align-items: center;
+            justify-content: center;
+            z-index: 200;
+        }
+        .popup-card {
+            background: #F5E6CC;
+            padding: 2rem;
+            border-radius: 0.5rem;
+            width: 90%;
+            max-width: 400px;
+            position: relative;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        .close-btn {
+            position: absolute;
+            top: 0.5rem;
+            right: 0.5rem;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: #4B3F2F;
+        }
+        .form-input {
+            width: 100%;
+            padding: 0.5rem;
+            margin-bottom: 1rem;
+            border: 1px solid #4B3F2F;
+            border-radius: 0.25rem;
+        }
+        .error-message {
+            color: red;
+            font-size: 0.875rem;
+            margin-bottom: 1rem;
+            display: none;
+        }
+        @media (max-width: 768px) {
+            .signup-btn, .profile-btn {
+                order: 2;
+                margin-left: 0.5rem;
+            }
+        }
+        /* Cart +1 Animation */
+        .cart-plus-one {
+            display: inline-block;
+            color: red;
+            font-weight: 700;
+            font-size: 0.875rem;
+            animation: slideIn 0.3s ease forwards;
+            margin-left: 0.25rem;
+        }
+        @keyframes slideIn {
+            from { transform: translateX(-10px); opacity: 0; }
+            to { transform: translateX(0); opacity: 1; }
+        }
+    </style>
+</head>
+<body class="bg-cream-100 text-gray-800">
+    <!-- Sign Up Pop-up -->
+    <div class="popup-overlay" id="signup-popup">
+        <div class="popup-card">
+            <i class="fas fa-times close-btn" onclick="closePopup('signup-popup')"></i>
+            <h2 class="text-2xl font-bold mb-4 text-brown-700">Sign Up</h2>
+            <div class="error-message" id="signup-error"></div>
+            <input type="text" id="signup-username" class="form-input" placeholder="Username" required>
+            <input type="text" id="signup-name" class="form-input" placeholder="Name" required>
+            <input type="text" id="signup-address" class="form-input" placeholder="Address" required>
+            <input type="password" id="signup-password" class="form-input" placeholder="Password" required>
+            <input type="password" id="signup-repassword" class="form-input" placeholder="Re-enter Password" required>
+            <button onclick="handleSignup()" class="bg-green-700 text-white py-2 px-4 rounded w-full hover:bg-green-600">Login</button>
+            <p class="text-center mt-2">Already have an account? <a href="#" onclick="switchToLogin()" class="text-green-700 hover:underline">Login</a></p>
+        </div>
+    </div>
+
+    <!-- Login Pop-up -->
+    <div class="popup-overlay" id="login-popup">
+        <div class="popup-card">
+            <i class="fas fa-times close-btn" onclick="closePopup('login-popup')"></i>
+            <h2 class="text-2xl font-bold mb-4 text-brown-700">Login</h2>
+            <div class="error-message" id="login-error"></div>
+            <input type="text" id="login-username" class="form-input" placeholder="Username" required>
+            <input type="password" id="login-password" class="form-input" placeholder="Password" required>
+            <button onclick="handleLogin()" class="bg-green-700 text-white py-2 px-4 rounded w-full hover:bg-green-600">Login</button>
+            <p class="text-center mt-2">Don't have an account? <a href="#" onclick="switchToSignup()" class="text-green-700 hover:underline">Sign Up</a></p>
+        </div>
+    </div>
+
+    <!-- Profile Pop-up -->
+    <div class="popup-overlay" id="profile-popup">
+        <div class="popup-card">
+            <i class="fas fa-times close-btn" onclick="closePopup('profile-popup')"></i>
+            <h2 class="text-2xl font-bold mb-4 text-brown-700">Profile</h2>
+            <p><strong>Username:</strong> <span id="profile-username"></span></p>
+            <p><strong>Name:</strong> <span id="profile-name"></span></p>
+            <p><strong>Address:</strong> <span id="profile-address"></span></p>
+            <button onclick="handleLogout()" class="bg-brown-700 text-black py-2 px-4 rounded w-full hover:bg-green-700 mt-4">Logout</button>
+        </div>
+    </div>
+
+    <!-- Sign Up Required Pop-up -->
+    <div class="popup-overlay" id="signup-required-popup">
+        <div class="popup-card">
+            <i class="fas fa-times close-btn" onclick="closePopup('signup-required-popup')"></i>
+            <h2 class="text-2xl font-bold mb-4 text-brown-700">Sign Up Required</h2>
+            <p class="mb-4">Please sign up or log in to add items to your cart.</p>
+            <button onclick="showPopup('signup-popup'); closePopup('signup-required-popup')" class="bg-green-700 text-white py-2 px-4 rounded w-full hover:bg-green-600">Sign Up</button>
+        </div>
+    </div>
+
+    <!-- Navigation Bar -->
+    <nav class="bg-cream-200 py-4 nav-sticky shadow-md" data-aos="fade-down" data-aos-duration="1000">
+        <div class="container mx-auto flex justify-between items-center px-4">
+            <h1 class="text-2xl text-brown-700 font-bold">Coffee Haven</h1>
+            <div class="flex items-center">
+                <div class="hidden md:flex space-x-6 mr-4">
+                    <a href="index.html" class="text-gray-800 hover:text-green-700">Home</a>
+                    <a href="menu.html" class="text-gray-800 hover:text-green-700">Menu</a>
+                    <a href="cart.html" class="text-gray-800 hover:text-green-700">Cart<span id="cart-plus-one"></span></a>
+                    <a href="about.html" class="text-gray-800 hover:text-green-700">About</a>
+                    <a href="contact.html" class="text-gray-800 hover:text-green-700">Contact</a>
+                </div>
+                <button id="signup-btn" class="signup-btn bg-brown-700 text-cream-200 py-2 px-4 rounded hover:bg-green-700 md:order-0" onclick="showPopup('signup-popup')">Sign Up</button>
+                <button id="profile-btn" class="profile-btn hidden text-2xl text-brown-700 hover:text-green-700 md:order-0" onclick="showProfile()"><i class="fas fa-user"></i></button>
+                <div class="md:hidden ml-2">
+                    <i class="fas fa-bars text-2xl cursor-pointer" onclick="toggleMenu()"></i>
+                </div>
+            </div>
+        </div>
+        <div id="mobile-menu" class="hidden md:hidden bg-cream-200 px-4 py-2">
+            <a href="index.html" class="block py-2 text-gray-800 hover:text-green-700">Home</a>
+            <a href="menu.html" class="block py-2 text-gray-800 hover:text-green-700">Menu</a>
+            <a href="cart.html" class="block py-2 text-gray-800 hover:text-green-700">Cart<span id="cart-plus-one-mobile"></span></a>
+            <a href="about.html" class="block py-2 text-gray-800 hover:text-green-700">About</a>
+            <a href="contact.html" class="block py-2 text-gray-800 hover:text-green-700">Contact</a>
+        </div>
+    </nav>
+
+    <!-- Menu Header -->
+    <section class="py-12 bg-cream-200 text-center">
+        <div class="container mx-auto px-4">
+            <h1 class="text-5xl font-bold mb-4"><i class="fas fa-coffee mr-2"></i>Our Menu</h1>
+            <p class="text-xl">Explore our handcrafted beverages and freshly baked goods.</p>
+        </div>
+    </section>
+
+    <!-- Filter Bar -->
+    <section class="py-4 bg-cream-200">
+        <div class="container mx-auto px-4 flex flex-col items-center">
+            <button id="menu-btn" class="menu-btn bg-brown-700 text-cream-200 rounded-lg hover:bg-green-700" data-aos="zoom-in" data-aos-duration="1000">
+                <div class="menu-btn-content">
+                    <div class="initial-content">
+                        <i class="fas fa-bell text-3xl mb-2"></i>
+                        <span class="text-xl">Menu</span>
+                    </div>
+                    <div class="flipped-content">
+                        <i class="fas fa-book-open text-3xl"></i>
+                    </div>
+                </div>
+            </button>
+            <div id="category-buttons" class="flex flex-wrap justify-center space-x-2 mt-4">
+                <button class="category-btn bg-brown-700 text-cream-200 py-2 px-4 rounded hover:bg-green-700" data-filter="Coffee">Coffee</button>
+                <button class="category-btn bg-brown-700 text-cream-200 py-2 px-4 rounded hover:bg-green-700" data-filter="Tea">Chai</button>
+                <button class="category-btn bg-brown-700 text-cream-200 py-2 px-4 rounded hover:bg-green-700" data-filter="Drinking Chocolate">Chocolate Drink</button>
+                <button class="category-btn bg-brown-700 text-cream-200 py-2 px-4 rounded hover:bg-green-700" data-filter="Bakery">Bakery</button>
+                <button class="category-btn bg-brown-700 text-cream-200 py-2 px-4 rounded hover:bg-green-700" data-filter="Mocktails and Beverages">Mocktails & Beverages</button>
+                <button class="category-btn bg-brown-700 text-cream-200 py-2 px-4 rounded hover:bg-green-700" data-filter="Others">Other</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Menu Items -->
+    <section class="py-12 bg-white">
+        <div class="container mx-auto px-4 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6" id="menu-items">
+            <!-- Menu items will be dynamically populated by JavaScript -->
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-brown-800 text-cream-200 py-8" data-aos="fade-up" data-aos-duration="1000">
+        <div class="container mx-auto px-4 grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div>
+                <h3 class="text-xl font-bold mb-4">Contact Us</h3>
+                <p>Email: info@coffeehaven.com</p>
+                <p>Phone: (555) 123-4567</p>
+                <p>Address: 123 Coffee St, NY</p>
+            </div>
+            <div>
+                <h3 class="text-xl font-bold mb-4">Follow Us</h3>
+                <div class="flex space-x-4">
+                    <a href="#" class="text-2xl hover:text-green-700"><i class="fab fa-facebook"></i></a>
+                    <a href="#" class="text-2xl hover:text-green-700"><i class="fab fa-instagram"></i></a>
+                    <a href="#" class="text-2xl hover:text-green-700"><i class="fab fa-twitter"></i></a>
+                </div>
+            </div>
+            <div>
+                <h3 class="text-xl font-bold mb-4">Quick Links</h3>
+                <a href="index.html" class="block hover:text-green-700">Home</a>
+                <a href="menu.html" class="block hover:text-green-700">Menu</a>
+                <a href="cart.html" class="block hover:text-green-700">Cart</a>
+                <a href="about.html" class="block hover:text-green-700">About</a>
+                <a href="contact.html" class="block hover:text-green-700">Contact</a>
+            </div>
+        </div>
+        <p class="text-center mt-8">© 2025 Coffee Haven</p>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+    <script>
+        // Initialize AOS
+        AOS.init();
+
+        function toggleMenu() {
+            const menu = document.getElementById('mobile-menu');
+            menu.classList.toggle('hidden');
+        }
+
+        // Pop-up Functions
+        function showPopup(popupId) {
+            document.getElementById(popupId).style.display = 'flex';
+        }
+
+        function closePopup(popupId) {
+            document.getElementById(popupId).style.display = 'none';
+            document.getElementById(`${popupId}-error`).style.display = 'none';
+            if (popupId === 'signup-popup') {
+                document.getElementById('signup-username').value = '';
+                document.getElementById('signup-name').value = '';
+                document.getElementById('signup-address').value = '';
+                document.getElementById('signup-password').value = '';
+                document.getElementById('signup-repassword').value = '';
+            } else if (popupId === 'login-popup') {
+                document.getElementById('login-username').value = '';
+                document.getElementById('login-password').value = '';
+            }
+        }
+
+        function switchToLogin() {
+            closePopup('signup-popup');
+            showPopup('login-popup');
+        }
+
+        function switchToSignup() {
+            closePopup('login-popup');
+            showPopup('signup-popup');
+        }
+
+        // User Management
+        function handleSignup() {
+            const username = document.getElementById('signup-username').value.trim();
+            const name = document.getElementById('signup-name').value.trim();
+            const address = document.getElementById('signup-address').value.trim();
+            const password = document.getElementById('signup-password').value;
+            const repassword = document.getElementById('signup-repassword').value;
+            const error = document.getElementById('signup-error');
+
+            if (!username || !name || !address || !password || !repassword) {
+                error.textContent = 'All fields are required.';
+                error.style.display = 'block';
+                return;
+            }
+            if (password !== repassword) {
+                error.textContent = 'Passwords do not match.';
+                error.style.display = 'block';
+                return;
+            }
+
+            const users = JSON.parse(localStorage.getItem('users') || '{}');
+            if (users[username]) {
+                error.textContent = 'Username already exists.';
+                error.style.display = 'block';
+                return;
+            }
+
+            users[username] = { name, address, password };
+            localStorage.setItem('users', JSON.stringify(users));
+            localStorage.setItem('currentUser', username);
+            closePopup('signup-popup');
+            updateNavBar();
+        }
+
+        function handleLogin() {
+            const username = document.getElementById('login-username').value.trim();
+            const password = document.getElementById('login-password').value;
+            const error = document.getElementById('login-error');
+
+            const users = JSON.parse(localStorage.getItem('users') || '{}');
+            if (!users[username] || users[username].password !== password) {
+                error.textContent = 'Invalid username or password.';
+                error.style.display = 'block';
+                return;
+            }
+
+            localStorage.setItem('currentUser', username);
+            closePopup('login-popup');
+            updateNavBar();
+        }
+
+        function handleLogout() {
+            localStorage.removeItem('currentUser');
+            closePopup('profile-popup');
+            updateNavBar();
+        }
+
+        function showProfile() {
+            const username = localStorage.getItem('currentUser');
+            const users = JSON.parse(localStorage.getItem('users') || '{}');
+            const user = users[username];
+
+            if (user) {
+                document.getElementById('profile-username').textContent = username;
+                document.getElementById('profile-name').textContent = user.name;
+                document.getElementById('profile-address').textContent = user.address;
+                showPopup('profile-popup');
+            }
+        }
+
+        function updateNavBar() {
+            const signupBtn = document.getElementById('signup-btn');
+            const profileBtn = document.getElementById('profile-btn');
+            const currentUser = localStorage.getItem('currentUser');
+
+            if (currentUser) {
+                signupBtn.classList.add('hidden');
+                profileBtn.classList.remove('hidden');
+            } else {
+                signupBtn.classList.remove('hidden');
+                profileBtn.classList.add('hidden');
+            }
+        }
+
+        // Filter Functionality
+        const menuButton = document.getElementById('menu-btn');
+        const categoryButtonsContainer = document.getElementById('category-buttons');
+        const categoryButtons = categoryButtonsContainer.querySelectorAll('.category-btn');
+        const menuItemsContainer = document.getElementById('menu-items');
+
+        let isMenuOpen = false;
+
+        menuButton.addEventListener('click', () => {
+            isMenuOpen = !isMenuOpen;
+            menuButton.classList.toggle('flipped', isMenuOpen);
+
+            if (isMenuOpen) {
+                categoryButtons.forEach((btn, index) => {
+                    setTimeout(() => {
+                        btn.classList.add('show');
+                    }, index * 50);
+                });
+            } else {
+                categoryButtons.forEach(btn => {
+                    btn.classList.remove('show', 'active');
+                });
+                document.querySelectorAll('.menu-item').forEach(item => {
+                    item.classList.remove('show');
+                });
+            }
+        });
+
+        categoryButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                categoryButtons.forEach(btn => btn.classList.remove('active'));
+                button.classList.add('active');
+
+                const filter = button.getAttribute('data-filter');
+                const menuItems = document.querySelectorAll('.menu-item');
+                menuItems.forEach(item => {
+                    if (item.getAttribute('data-category') === filter) {
+                        item.classList.add('show');
+                    } else {
+                        item.classList.remove('show');
+                    }
+                });
+            });
+        });
+
+        // Fetch and Display Menu Items
+        async function loadMenuItems() {
+            try {
+                const response = await fetch('/menu_details.json');
+                const data = await response.json();
+
+                const categoryMap = {
+                    'CoffeeProducts': { display: 'Coffee', icon: 'fa-coffee' },
+                    'ChaiProducts': { display: 'Tea', icon: 'fa-leaf' },
+                    'ChocolateDrinkingProducts': { display: 'Drinking Chocolate', icon: 'fa-mug-hot' },
+                    'BakeryProducts': { display: 'Bakery', icon: 'fa-bread-slice' },
+                    'MocktailsAndBeverages': { display: 'Mocktails and Beverages', icon: 'fa-cocktail' },
+                    'OtherCoffeeShopProducts': { display: 'Others', icon: 'fa-utensils' }
+                };
+
+                menuItemsContainer.innerHTML = '';
+
+                Object.keys(data).forEach(categoryKey => {
+                    const categoryInfo = categoryMap[categoryKey] || { display: categoryKey, icon: 'fa-utensils' };
+                    const products = data[categoryKey];
+
+                    products.forEach(product => {
+                        const itemDiv = document.createElement('div');
+                        itemDiv.className = 'menu-item bg-cream-100 p-6 rounded-lg shadow-lg w-64 aspect-square';
+                        itemDiv.setAttribute('data-category', categoryInfo.display);
+                        itemDiv.style.backgroundImage = `url(${product.ImageURL || '/images/placeholder.jpg'})`;
+                        itemDiv.style.backgroundSize = 'cover';
+                        itemDiv.style.backgroundPosition = 'center';
+
+                        let detailsHTML = '';
+                        Object.keys(product).forEach(key => {
+                            if (key !== 'ProductID' && key !== 'ImageURL' && key !== 'Description') {
+                                detailsHTML += `<p class="text-gray-200 text-xs"><strong>${key}:</strong> ${product[key]}</p>`;
+                            }
+                        });
+
+                        itemDiv.innerHTML = `
+                            <div class="menu-item-content flex flex-col h-full justify-center items-center text-center p-4">
+                                <div class="initial-content">
+                                    <h3 class="text-lg font-bold text-white"><i class="fas ${categoryInfo.icon} mr-2"></i>${product.ProductName}</h3>
+                                    <p class="text-gray-200 text-sm my-2">${product.Description}</p>
+                                    <div class="flex space-x-2">
+                                        <button class="read-more-btn bg-brown-700 text-cream-200 py-2 px-4 rounded hover:bg-green-700">Read More</button>
+                                        <button class="cart-btn bg-brown-700 text-cream-200 py-2 px-4 rounded hover:bg-green-700" onclick='addToCart("${product.ProductName}", "${product.Price}", "${product.ImageURL || '/images/placeholder.jpg'}")'><i class="fas fa-cart-plus"></i></button>
+                                    </div>
+                                </div>
+                                <div class="full-details">${detailsHTML}</div>
+                            </div>
+                        `;
+
+                        menuItemsContainer.appendChild(itemDiv);
+                    });
+                });
+
+                // Event delegation for Read More buttons
+                menuItemsContainer.addEventListener('click', (e) => {
+                    const button = e.target.closest('.read-more-btn');
+                    if (button) {
+                        e.stopPropagation();
+                        const card = button.closest('.menu-item');
+                        const initialContent = card.querySelector('.initial-content');
+                        const fullDetails = card.querySelector('.full-details');
+
+                        initialContent.classList.add('fade-out');
+                        setTimeout(() => {
+                            initialContent.style.display = 'none';
+                            initialContent.classList.remove('fade-out');
+                            fullDetails.style.display = 'block';
+                            fullDetails.classList.add('fade-in');
+                            setTimeout(() => {
+                                fullDetails.classList.remove('fade-in');
+                            }, 300);
+                        }, 300);
+                    }
+                });
+
+                // Revert to initial content on click anywhere
+                document.addEventListener('click', (e) => {
+                    if (!e.target.closest('.read-more-btn') && !e.target.closest('.full-details')) {
+                        document.querySelectorAll('.menu-item').forEach(card => {
+                            const initialContent = card.querySelector('.initial-content');
+                            const fullDetails = card.querySelector('.full-details');
+                            if (fullDetails.style.display === 'block') {
+                                fullDetails.classList.add('fade-out');
+                                setTimeout(() => {
+                                    fullDetails.style.display = 'none';
+                                    fullDetails.classList.remove('fade-out');
+                                    initialContent.style.display = 'block';
+                                    initialContent.classList.add('fade-in');
+                                    setTimeout(() => {
+                                        initialContent.classList.remove('fade-in');
+                                    }, 300);
+                                }, 300);
+                            }
+                        });
+                    }
+                });
+            } catch (error) {
+                console.error('Error loading menu items:', error);
+                menuItemsContainer.innerHTML = '<p class="text-center text-red-600">Failed to load menu items. Please try again later.</p>';
+            }
+        }
+
+        function addToCart(productName, price, image) {
+            const currentUser = localStorage.getItem('currentUser');
+            if (!currentUser) {
+                showPopup('signup-required-popup');
+                return;
+            }
+
+            const carts = JSON.parse(localStorage.getItem('carts') || '{}');
+            if (!carts[currentUser]) carts[currentUser] = [];
+
+            const existingItem = carts[currentUser].find(item => item.productName === productName);
+            if (existingItem) {
+                existingItem.quantity += 1;
+            } else {
+                carts[currentUser].push({ productName, price, image, quantity: 1 });
+            }
+
+            localStorage.setItem('carts', JSON.stringify(carts));
+
+            // Show +1 animation
+            const cartPlusOne = document.getElementById('cart-plus-one');
+            const cartPlusOneMobile = document.getElementById('cart-plus-one-mobile');
+            const plusOneSpan = document.createElement('span');
+            plusOneSpan.className = 'cart-plus-one';
+            plusOneSpan.textContent = '+1';
+
+            // Add to desktop nav
+            cartPlusOne.innerHTML = '';
+            cartPlusOne.appendChild(plusOneSpan);
+
+            // Add to mobile nav
+            cartPlusOneMobile.innerHTML = '';
+            cartPlusOneMobile.appendChild(plusOneSpan.cloneNode(true));
+
+            // Remove after animation
+            setTimeout(() => {
+                cartPlusOne.innerHTML = '';
+                cartPlusOneMobile.innerHTML = '';
+            }, 1000);
+        }
+
+        // Load menu items and update nav bar on page load
+        document.addEventListener('DOMContentLoaded', () => {
+            loadMenuItems();
+            updateNavBar();
+        });
+    </script>
+</body>
+</html>
