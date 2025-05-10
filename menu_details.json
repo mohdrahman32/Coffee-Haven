@@ -32,7 +32,7 @@
         "IsOrganic": false,
         "DateAdded": "15-01-2025",
         "LastUpdated": "02-05-2025",
-        "ImageURL": "../assets/images/chocolate/dark_hot_chocolate.jpg"
+        "ImageURL": "assets/images/chocolate/dark_hot_chocolate.jpg"
       },
       {
         "ProductID": 3,
@@ -49,7 +49,7 @@
         "IsOrganic": true,
         "DateAdded": "01-02-2025",
         "LastUpdated": "03-05-2025",
-        "ImageURL": "../assets/images/chocolate/spiced_mexican_chocolate.jpg"
+        "ImageURL": "assets/images/chocolate/spiced_mexican_chocolate.jpg"
       },
       {
         "ProductID": 4,
@@ -66,7 +66,7 @@
         "IsOrganic": false,
         "DateAdded": "10-02-2025",
         "LastUpdated": "01-05-2025",
-        "ImageURL": "../assets/images/chocolate/white_hot_chocolate.jpg"
+        "ImageURL": "assets/images/chocolate/white_hot_chocolate.jpg"
       },
       {
         "ProductID": 5,
@@ -83,7 +83,7 @@
         "IsOrganic": true,
         "DateAdded": "01-03-2025",
         "LastUpdated": "02-05-2025",
-        "ImageURL": "../assets/images/chocolate/salted_caramel_chocolate.jpg"
+        "ImageURL": "assets/images/chocolate/salted_caramel_chocolate.jpg"
       },
       {
         "ProductID": 6,
@@ -100,7 +100,7 @@
         "IsOrganic": true,
         "DateAdded": "05-03-2025",
         "LastUpdated": "03-05-2025",
-        "ImageURL": "../assets/images/chocolate/mocha_hot_chocolate.jpg"
+        "ImageURL": "assets/images/chocolate/mocha_hot_chocolate.jpg"
       },
       {
         "ProductID": 7,
@@ -117,7 +117,7 @@
         "IsOrganic": false,
         "DateAdded": "15-03-2025",
         "LastUpdated": "01-05-2025",
-        "ImageURL": "../assets/images/chocolate/peppermint_hot_chocolate.jpg"
+        "ImageURL": "assets/images/chocolate/peppermint_hot_chocolate.jpg"
       },
       {
         "ProductID": 8,
@@ -134,7 +134,7 @@
         "IsOrganic": true,
         "DateAdded": "01-04-2025",
         "LastUpdated": "02-05-2025",
-        "ImageURL": "../assets/images/chocolate/hazelnut_hot_chocolate.jpg"
+        "ImageURL": "assets/images/chocolate/hazelnut_hot_chocolate.jpg"
       },
       {
         "ProductID": 9,
@@ -151,7 +151,7 @@
         "IsOrganic": true,
         "DateAdded": "10-04-2025",
         "LastUpdated": "03-05-2025",
-        "ImageURL": "../assets/images/chocolate/orange_zest_chocolate.jpg"
+        "ImageURL": "assets/images/chocolate/orange_zest_chocolate.jpg"
       },
       {
         "ProductID": 10,
@@ -168,7 +168,7 @@
         "IsOrganic": false,
         "DateAdded": "15-04-2025",
         "LastUpdated": "01-05-2025",
-        "ImageURL": "../assets/images/chocolate/vegan_hot_chocolate.jpg"
+        "ImageURL": "assets/images/chocolate/vegan_hot_chocolate.jpg"
       },
       {
         "ProductID": 11,
@@ -185,7 +185,7 @@
         "IsOrganic": true,
         "DateAdded": "20-04-2025",
         "LastUpdated": "02-05-2025",
-        "ImageURL": "../assets/images/chocolate/chai_spiced_chocolate.jpg"
+        "ImageURL": "assets/images/chocolate/chai_spiced_chocolate.jpg"
       },
       {
         "ProductID": 12,
@@ -202,7 +202,7 @@
         "IsOrganic": true,
         "DateAdded": "25-04-2025",
         "LastUpdated": "03-05-2025",
-        "ImageURL": "../assets/images/chocolate/coconut_hot_chocolate.jpg"
+        "ImageURL": "assets/images/chocolate/coconut_hot_chocolate.jpg"
       },
       {
         "ProductID": 13,
@@ -219,7 +219,7 @@
         "IsOrganic": false,
         "DateAdded": "30-04-2025",
         "LastUpdated": "01-05-2025",
-        "ImageURL": "../assets/images/chocolate/almond_milk_chocolate.jpg"
+        "ImageURL": "assets/images/chocolate/almond_milk_chocolate.jpg"
       },
       {
         "ProductID": 14,
@@ -236,7 +236,7 @@
         "IsOrganic": true,
         "DateAdded": "01-05-2025",
         "LastUpdated": "02-05-2025",
-        "ImageURL": "../assets/images/chocolate/gingerbread_hot_chocolate.jpg"
+        "ImageURL": "assets/images/chocolate/gingerbread_hot_chocolate.jpg"
       },
       {
         "ProductID": 15,
@@ -253,7 +253,7 @@
         "IsOrganic": false,
         "DateAdded": "02-05-2025",
         "LastUpdated": "03-05-2025",
-        "ImageURL": "../assets/images/chocolate/decaf_mocha_chocolate.jpg"
+        "ImageURL": "assets/images/chocolate/decaf_mocha_chocolate.jpg"
       }
     ],
     "ChaiProducts": [
@@ -272,7 +272,7 @@
         "IsOrganic": true,
         "DateAdded": "10-01-2025",
         "LastUpdated": "01-05-2025",
-        "ImageURL": "../assets/images/chai/classic_masala_chai.jpg"
+        "ImageURL": "assets/images/chai/classic_masala_chai.jpg"
       },
       {
         "ProductID": 2,
@@ -289,7 +289,7 @@
         "IsOrganic": false,
         "DateAdded": "15-01-2025",
         "LastUpdated": "02-05-2025",
-        "ImageURL": "../assets/images/chai/ginger_chai.jpg"
+        "ImageURL": "assets/images/chai/ginger_chai.jpg"
       },
       {
         "ProductID": 3,
@@ -306,7 +306,7 @@
         "IsOrganic": true,
         "DateAdded": "01-02-2025",
         "LastUpdated": "03-05-2025",
-        "ImageURL": "../assets/images/chai/cardamom_chai.jpg"
+        "ImageURL": "assets/images/chai/cardamom_chai.jpg"
       },
       {
         "ProductID": 4,
@@ -323,7 +323,7 @@
         "IsOrganic": false,
         "DateAdded": "10-02-2025",
         "LastUpdated": "01-05-2025",
-        "ImageURL": "../assets/images/chai/saffron_chai.jpg"
+        "ImageURL": "assets/images/chai/saffron_chai.jpg"
       },
       {
         "ProductID": 5,
@@ -340,7 +340,7 @@
         "IsOrganic": true,
         "DateAdded": "01-03-2025",
         "LastUpdated": "02-05-2025",
-        "ImageURL": "../assets/images/chai/vanilla_chai.jpg"
+        "ImageURL": "assets/images/chai/vanilla_chai.jpg"
       },
       {
         "ProductID": 6,
@@ -357,7 +357,7 @@
         "IsOrganic": true,
         "DateAdded": "05-03-2025",
         "LastUpdated": "03-05-2025",
-        "ImageURL": "../assets/images/chai/kashmiri_kahwa_chai.jpg"
+        "ImageURL": "assets/images/chai/kashmiri_kahwa_chai.jpg"
       },
       {
         "ProductID": 7,
@@ -374,7 +374,7 @@
         "IsOrganic": false,
         "DateAdded": "15-03-2025",
         "LastUpdated": "01-05-2025",
-        "ImageURL": "../assets/images/chai/peppermint_chai.jpg"
+        "ImageURL": "assets/images/chai/peppermint_chai.jpg"
       },
       {
         "ProductID": 8,
@@ -391,7 +391,7 @@
         "IsOrganic": true,
         "DateAdded": "01-04-2025",
         "LastUpdated": "02-05-2025",
-        "ImageURL": "../assets/images/chai/rose_chai.jpg"
+        "ImageURL": "assets/images/chai/rose_chai.jpg"
       },
       {
         "ProductID": 9,
@@ -408,7 +408,7 @@
         "IsOrganic": false,
         "DateAdded": "10-04-2025",
         "LastUpdated": "03-05-2025",
-        "ImageURL": "../assets/images/chai/cinnamon_chai.jpg"
+        "ImageURL": "assets/images/chai/cinnamon_chai.jpg"
       },
       {
         "ProductID": 10,
@@ -425,7 +425,7 @@
         "IsOrganic": true,
         "DateAdded": "15-04-2025",
         "LastUpdated": "01-05-2025",
-        "ImageURL": "../assets/images/chai/tulsi_chai.jpg"
+        "ImageURL": "assets/images/chai/tulsi_chai.jpg"
       },
       {
         "ProductID": 11,
@@ -442,7 +442,7 @@
         "IsOrganic": true,
         "DateAdded": "20-04-2025",
         "LastUpdated": "02-05-2025",
-        "ImageURL": "../assets/images/chai/lemongrass_chai.jpg"
+        "ImageURL": "assets/images/chai/lemongrass_chai.jpg"
       },
       {
         "ProductID": 12,
@@ -459,7 +459,7 @@
         "IsOrganic": false,
         "DateAdded": "25-04-2025",
         "LastUpdated": "03-05-2025",
-        "ImageURL": "../assets/images/chai/clove_chai.jpg"
+        "ImageURL": "assets/images/chai/clove_chai.jpg"
       },
       {
         "ProductID": 13,
@@ -476,7 +476,7 @@
         "IsOrganic": true,
         "DateAdded": "30-04-2025",
         "LastUpdated": "01-05-2025",
-        "ImageURL": "../assets/images/chai/chocolate_chai.jpg"
+        "ImageURL": "assets/images/chai/chocolate_chai.jpg"
       },
       {
         "ProductID": 14,
@@ -493,7 +493,7 @@
         "IsOrganic": false,
         "DateAdded": "01-05-2025",
         "LastUpdated": "02-05-2025",
-        "ImageURL": "../assets/images/chai/decaf_masala_chai.jpg"
+        "ImageURL": "assets/images/chai/decaf_masala_chai.jpg"
       },
       {
         "ProductID": 15,
@@ -510,7 +510,7 @@
         "IsOrganic": true,
         "DateAdded": "02-05-2025",
         "LastUpdated": "03-05-2025",
-        "ImageURL": "../assets/images/chai/spiced_rooibos_chai.jpg"
+        "ImageURL": "assets/images/chai/spiced_rooibos_chai.jpg"
       }
     ],
     "CoffeeProducts": [
@@ -529,7 +529,7 @@
         "IsOrganic": true,
         "DateAdded": "10-01-2025",
         "LastUpdated": "01-05-2025",
-        "ImageURL": "../assets/images/coffee/espresso.jpg"
+        "ImageURL": "assets/images/coffee/espresso.jpg"
       },
       {
         "ProductID": 2,
@@ -546,7 +546,7 @@
         "IsOrganic": false,
         "DateAdded": "15-01-2025",
         "LastUpdated": "02-05-2025",
-        "ImageURL": "../assets/images/coffee/house_drip.jpg"
+        "ImageURL": "assets/images/coffee/house_drip.jpg"
       },
       {
         "ProductID": 3,
@@ -563,7 +563,7 @@
         "IsOrganic": true,
         "DateAdded": "01-02-2025",
         "LastUpdated": "03-05-2025",
-        "ImageURL": "../assets/images/coffee/cold_brew.jpg"
+        "ImageURL": "assets/images/coffee/cold_brew.jpg"
       },
       {
         "ProductID": 4,
@@ -580,7 +580,7 @@
         "IsOrganic": false,
         "DateAdded": "10-02-2025",
         "LastUpdated": "01-05-2025",
-        "ImageURL": "../assets/images/coffee/decaf_espress.jpg"
+        "ImageURL": "assets/images/coffee/decaf_espress.jpg"
       },
       {
         "ProductID": 5,
@@ -597,7 +597,7 @@
         "IsOrganic": true,
         "DateAdded": "01-03-2025",
         "LastUpdated": "02-05-2025",
-        "ImageURL": "../assets/images/coffee/yirgacheffe.jpg"
+        "ImageURL": "assets/images/coffee/yirgacheffe.jpg"
       },
       {
         "ProductID": 6,
@@ -614,7 +614,7 @@
         "IsOrganic": false,
         "DateAdded": "05-03-2025",
         "LastUpdated": "03-05-2025",
-        "ImageURL": "../assets/images/coffee/mocha_java.jpg"
+        "ImageURL": "assets/images/coffee/mocha_java.jpg"
       },
       {
         "ProductID": 7,
@@ -631,7 +631,7 @@
         "IsOrganic": true,
         "DateAdded": "15-03-2025",
         "LastUpdated": "01-05-2025",
-        "ImageURL": "../assets/images/coffee/nitro_cold.jpg"
+        "ImageURL": "assets/images/coffee/nitro_cold.jpg"
       },
       {
         "ProductID": 8,
@@ -648,7 +648,7 @@
         "IsOrganic": false,
         "DateAdded": "01-04-2025",
         "LastUpdated": "02-05-2025",
-        "ImageURL": "../assets/images/coffee/sumatra.jpg"
+        "ImageURL": "assets/images/coffee/sumatra.jpg"
       },
       {
         "ProductID": 9,
@@ -665,7 +665,7 @@
         "IsOrganic": true,
         "DateAdded": "10-04-2025",
         "LastUpdated": "03-05-2025",
-        "ImageURL": "../assets/images/coffee/guatemala.jpg"
+        "ImageURL": "assets/images/coffee/guatemala.jpg"
       },
       {
         "ProductID": 10,
@@ -682,7 +682,7 @@
         "IsOrganic": true,
         "DateAdded": "15-04-2025",
         "LastUpdated": "01-05-2025",
-        "ImageURL": "../assets/images/coffee/kenya.jpg"
+        "ImageURL": "assets/images/coffee/kenya.jpg"
       },
       {
         "ProductID": 11,
@@ -699,7 +699,7 @@
         "IsOrganic": false,
         "DateAdded": "20-04-2025",
         "LastUpdated": "02-05-2025",
-        "ImageURL": "../assets/images/coffee/colombian.jpg"
+        "ImageURL": "assets/images/coffee/colombian.jpg"
       },
       {
         "ProductID": 12,
@@ -716,7 +716,7 @@
         "IsOrganic": true,
         "DateAdded": "25-04-2025",
         "LastUpdated": "03-05-2025",
-        "ImageURL": "../assets/images/coffee/french_roast.jpg"
+        "ImageURL": "assets/images/coffee/french_roast.jpg"
       },
       {
         "ProductID": 13,
@@ -733,7 +733,7 @@
         "IsOrganic": true,
         "DateAdded": "30-04-2025",
         "LastUpdated": "01-05-2025",
-        "ImageURL": "../assets/images/coffee/ethiopian.jpg"
+        "ImageURL": "assets/images/coffee/ethiopian.jpg"
       },
       {
         "ProductID": 14,
@@ -750,7 +750,7 @@
         "IsOrganic": false,
         "DateAdded": "01-05-2025",
         "LastUpdated": "02-05-2025",
-        "ImageURL": "../assets/images/coffee/costa_rican.jpg"
+        "ImageURL": "assets/images/coffee/costa_rican.jpg"
       },
       {
         "ProductID": 15,
@@ -767,7 +767,7 @@
         "IsOrganic": true,
         "DateAdded": "02-05-2025",
         "LastUpdated": "03-05-2025",
-        "ImageURL": "../assets/images/coffee/decaf_cold_brew.jpg"
+        "ImageURL": "assets/images/coffee/decaf_cold_brew.jpg"
       }
     ],
     "OtherCoffeeShopProducts": [
@@ -785,7 +785,7 @@
       "IsVegan": false,
       "DateAdded": "10-01-2025",
       "LastUpdated": "01-05-2025",
-      "ImageURL": "../assets/images/other/matcha_latte.avif"
+      "ImageURL": "assets/images/other/matcha_latte.avif"
     },
     {
       "ProductID": 2,
@@ -801,7 +801,7 @@
       "IsVegan": true,
       "DateAdded": "15-01-2025",
       "LastUpdated": "02-05-2025",
-      "ImageURL": "../assets/images/other/iced_peach_tea.avif"
+      "ImageURL": "assets/images/other/iced_peach_tea.avif"
     },
     {
       "ProductID": 3,
@@ -817,7 +817,7 @@
       "IsVegan": false,
       "DateAdded": "01-02-2025",
       "LastUpdated": "03-05-2025",
-      "ImageURL": "../assets/images/other/mango_smoothie.webp"
+      "ImageURL": "assets/images/other/mango_smoothie.webp"
     },
     {
       "ProductID": 4,
@@ -833,7 +833,7 @@
       "IsVegan": true,
       "DateAdded": "10-02-2025",
       "LastUpdated": "01-05-2025",
-      "ImageURL": "../assets/images/other/sparkling_lemonade.avif"
+      "ImageURL": "assets/images/other/sparkling_lemonade.avif"
     },
     {
       "ProductID": 5,
@@ -849,7 +849,7 @@
       "IsVegan": false,
       "DateAdded": "01-03-2025",
       "LastUpdated": "02-05-2025",
-      "ImageURL": "../assets/images/other/turmeric_latte.avif"
+      "ImageURL": "assets/images/other/turmeric_latte.avif"
     },
     {
       "ProductID": 6,
@@ -865,7 +865,7 @@
       "IsVegan": false,
       "DateAdded": "05-03-2025",
       "LastUpdated": "03-05-2025",
-      "ImageURL": "../assets/images/other/ham_cheese_panini.jpg"
+      "ImageURL": "assets/images/other/ham_cheese_panini.jpg"
     },
     {
       "ProductID": 7,
@@ -881,7 +881,7 @@
       "IsVegan": false,
       "DateAdded": "15-03-2025",
       "LastUpdated": "01-05-2025",
-      "ImageURL": "../assets/images/other/avocado_toast.jpg"
+      "ImageURL": "assets/images/other/avocado_toast.jpg"
     },
     {
       "ProductID": 8,
@@ -897,7 +897,7 @@
       "IsVegan": true,
       "DateAdded": "01-04-2025",
       "LastUpdated": "02-05-2025",
-      "ImageURL": "../assets/images/other/vegan_protein_bar.avif"
+      "ImageURL": "assets/images/other/vegan_protein_bar.avif"
     },
     {
       "ProductID": 9,
@@ -913,7 +913,7 @@
       "IsVegan": true,
       "DateAdded": "10-04-2025",
       "LastUpdated": "03-05-2025",
-      "ImageURL": "../assets/images/other/fruit_salad.avif"
+      "ImageURL": "assets/images/other/fruit_salad.avif"
     },
     {
       "ProductID": 10,
@@ -929,7 +929,7 @@
       "IsVegan": false,
       "DateAdded": "15-04-2025",
       "LastUpdated": "01-05-2025",
-      "ImageURL": "../assets/images/other/gluten_free_granola.webp"
+      "ImageURL": "assets/images/other/gluten_free_granola.webp"
     },
     {
       "ProductID": 11,
@@ -945,7 +945,7 @@
       "IsVegan": true,
       "DateAdded": "20-04-2025",
       "LastUpdated": "02-05-2025",
-      "ImageURL": "../assets/images/other/coffee_thermos.avif"
+      "ImageURL": "assets/images/other/coffee_thermos.avif"
     },
     {
       "ProductID": 12,
@@ -961,7 +961,7 @@
       "IsVegan": true,
       "DateAdded": "25-04-2025",
       "LastUpdated": "03-05-2025",
-      "ImageURL": "../assets/images/other/reusable_mug.avif"
+      "ImageURL": "assets/images/other/reusable_mug.avif"
     },
     {
       "ProductID": 13,
@@ -977,7 +977,7 @@
       "IsVegan": true,
       "DateAdded": "30-04-2025",
       "LastUpdated": "01-05-2025",
-      "ImageURL": "../assets/images/other/fruit_infuser_bottle.png"
+      "ImageURL": "assets/images/other/fruit_infuser_bottle.png"
     },
     {
       "ProductID": 14,
@@ -993,7 +993,7 @@
       "IsVegan": false,
       "DateAdded": "01-05-2025",
       "LastUpdated": "02-05-2025",
-      "ImageURL": "../assets/images/other/craft_ipa.jpg"
+      "ImageURL": "assets/images/other/craft_ipa.jpg"
     },
     {
       "ProductID": 15,
@@ -1009,7 +1009,7 @@
       "IsVegan": true,
       "DateAdded": "02-05-2025",
       "LastUpdated": "03-05-2025",
-      "ImageURL": "../assets/images/other/honey_jar.avif"
+      "ImageURL": "assets/images/other/honey_jar.avif"
     }
   ],
   "MocktailsAndBeverages": [
@@ -1027,7 +1027,7 @@
       "IsVegan": true,
       "DateAdded": "10-01-2025",
       "LastUpdated": "01-05-2025",
-      "ImageURL": "../assets/images/mocktails/virgin_mojito.jpeg"
+      "ImageURL": "assets/images/mocktails/virgin_mojito.jpeg"
     },
     {
       "ProductID": 2,
@@ -1043,7 +1043,7 @@
       "IsVegan": true,
       "DateAdded": "15-01-2025",
       "LastUpdated": "02-05-2025",
-      "ImageURL": "../assets/images/mocktails/strawberry_basil_smash.webp"
+      "ImageURL": "assets/images/mocktails/strawberry_basil_smash.webp"
     },
     {
       "ProductID": 3,
@@ -1059,7 +1059,7 @@
       "IsVegan": true,
       "DateAdded": "01-02-2025",
       "LastUpdated": "03-05-2025",
-      "ImageURL": "../assets/images/mocktails/pineapple_ginger_mule.webp"
+      "ImageURL": "assets/images/mocktails/pineapple_ginger_mule.webp"
     },
     {
       "ProductID": 4,
@@ -1075,7 +1075,7 @@
       "IsVegan": true,
       "DateAdded": "10-02-2025",
       "LastUpdated": "01-05-2025",
-      "ImageURL": "../assets/images/mocktails/cucumber_cooler.jpg"
+      "ImageURL": "assets/images/mocktails/cucumber_cooler.jpg"
     },
     {
       "ProductID": 5,
@@ -1091,7 +1091,7 @@
       "IsVegan": true,
       "DateAdded": "01-03-2025",
       "LastUpdated": "02-05-2025",
-      "ImageURL": "../assets/images/mocktails/pomegranate_spritzer.jpg"
+      "ImageURL": "assets/images/mocktails/pomegranate_spritzer.jpg"
     },
     {
       "ProductID": 6,
@@ -1107,7 +1107,7 @@
       "IsVegan": true,
       "DateAdded": "05-03-2025",
       "LastUpdated": "03-05-2025",
-      "ImageURL": "../assets/images/mocktails/mango_passionfruit_fizz.webp"
+      "ImageURL": "assets/images/mocktails/mango_passionfruit_fizz.webp"
     },
     {
       "ProductID": 7,
@@ -1123,7 +1123,7 @@
       "IsVegan": true,
       "DateAdded": "15-03-2025",
       "LastUpdated": "01-05-2025",
-      "ImageURL": "../assets/images/mocktails/blueberry_lavender_lemonade.jpg"
+      "ImageURL": "assets/images/mocktails/blueberry_lavender_lemonade.jpg"
     },
     {
       "ProductID": 8,
@@ -1139,7 +1139,7 @@
       "IsVegan": true,
       "DateAdded": "01-04-2025",
       "LastUpdated": "02-05-2025",
-      "ImageURL": "../assets/images/mocktails/iced_hibiscus_tea.jpeg"
+      "ImageURL": "assets/images/mocktails/iced_hibiscus_tea.jpeg"
     },
     {
       "ProductID": 9,
@@ -1155,7 +1155,7 @@
       "IsVegan": true,
       "DateAdded": "10-04-2025",
       "LastUpdated": "03-05-2025",
-      "ImageURL": "../assets/images/mocktails/spiced_apple_cider.jpeg"
+      "ImageURL": "assets/images/mocktails/spiced_apple_cider.jpeg"
     },
     {
       "ProductID": 10,
@@ -1171,7 +1171,7 @@
       "IsVegan": false,
       "DateAdded": "15-04-2025",
       "LastUpdated": "01-05-2025",
-      "ImageURL": "../assets/images/mocktails/berry_smoothie.jpg"
+      "ImageURL": "assets/images/mocktails/berry_smoothie.jpg"
     },
     {
       "ProductID": 11,
@@ -1187,7 +1187,7 @@
       "IsVegan": true,
       "DateAdded": "20-04-2025",
       "LastUpdated": "02-05-2025",
-      "ImageURL": "../assets/images/mocktails/green_detox_juice.jpg"
+      "ImageURL": "assets/images/mocktails/green_detox_juice.jpg"
     },
     {
       "ProductID": 12,
@@ -1203,7 +1203,7 @@
       "IsVegan": true,
       "DateAdded": "25-04-2025",
       "LastUpdated": "03-05-2025",
-      "ImageURL": "../assets/images/mocktails/vanilla_oat_milk_latte.jpg"
+      "ImageURL": "assets/images/mocktails/vanilla_oat_milk_latte.jpg"
     },
     {
       "ProductID": 13,
@@ -1219,7 +1219,7 @@
       "IsVegan": true,
       "DateAdded": "30-04-2025",
       "LastUpdated": "01-05-2025",
-      "ImageURL": "../assets/images/mocktails/watermelon_mint_refresher.webp"
+      "ImageURL": "assets/images/mocktails/watermelon_mint_refresher.webp"
     },
     {
       "ProductID": 14,
@@ -1235,7 +1235,7 @@
       "IsVegan": true,
       "DateAdded": "01-05-2025",
       "LastUpdated": "02-05-2025",
-      "ImageURL": "../assets/images/mocktails/caramel_apple_spritz.jpeg"
+      "ImageURL": "assets/images/mocktails/caramel_apple_spritz.jpeg"
     },
     {
       "ProductID": 15,
@@ -1251,7 +1251,7 @@
       "IsVegan": true,
       "DateAdded": "02-05-2025",
       "LastUpdated": "03-05-2025",
-      "ImageURL": "../assets/images/mocktails/chai_spiced_iced_tea.webp"
+      "ImageURL": "assets/images/mocktails/chai_spiced_iced_tea.webp"
     }
   ],
   "BakeryProducts": [
@@ -1269,7 +1269,7 @@
       "IsVegan": false,
       "DateAdded": "10-01-2025",
       "LastUpdated": "01-05-2025",
-      "ImageURL": "../assets/images/bakery/croissant.webp"
+      "ImageURL": "assets/images/bakery/croissant.webp"
     },
     {
       "ProductID": 2,
@@ -1285,7 +1285,7 @@
       "IsVegan": false,
       "DateAdded": "15-01-2025",
       "LastUpdated": "02-05-2025",
-      "ImageURL": "../assets/images/bakery/chocolate_chip_cookie.jpg"
+      "ImageURL": "assets/images/bakery/chocolate_chip_cookie.jpg"
     },
     {
       "ProductID": 3,
@@ -1301,7 +1301,7 @@
       "IsVegan": false,
       "DateAdded": "01-02-2025",
       "LastUpdated": "03-05-2025",
-      "ImageURL": "../assets/images/bakery/sourdough_bread.webp"
+      "ImageURL": "assets/images/bakery/sourdough_bread.webp"
     },
     {
       "ProductID": 4,
@@ -1317,7 +1317,7 @@
       "IsVegan": false,
       "DateAdded": "10-02-2025",
       "LastUpdated": "01-05-2025",
-      "ImageURL": "../assets/images/bakery/blueberry_muffin.jpg"
+      "ImageURL": "assets/images/bakery/blueberry_muffin.jpg"
     },
     {
       "ProductID": 5,
@@ -1333,7 +1333,7 @@
       "IsVegan": true,
       "DateAdded": "01-03-2025",
       "LastUpdated": "02-05-2025",
-      "ImageURL": "../assets/images/bakery/vegan_banana_bread.jpg"
+      "ImageURL": "assets/images/bakery/vegan_banana_bread.jpg"
     },
     {
       "ProductID": 6,
@@ -1349,7 +1349,7 @@
       "IsVegan": false,
       "DateAdded": "05-03-2025",
       "LastUpdated": "03-05-2025",
-      "ImageURL": "../assets/images/bakery/cinnamon_roll.jpg"
+      "ImageURL": "assets/images/bakery/cinnamon_roll.jpg"
     },
     {
       "ProductID": 7,
@@ -1365,7 +1365,7 @@
       "IsVegan": false,
       "DateAdded": "15-03-2025",
       "LastUpdated": "01-05-2025",
-      "ImageURL": "../assets/images/bakery/almond_bistcotti.jpeg"
+      "ImageURL": "assets/images/bakery/almond_bistcotti.jpeg"
     },
     {
       "ProductID": 8,
@@ -1381,7 +1381,7 @@
       "IsVegan": false,
       "DateAdded": "01-04-2025",
       "LastUpdated": "02-05-2025",
-      "ImageURL": "../assets/images/bakery/whole_wheat_bagel.jpeg"
+      "ImageURL": "assets/images/bakery/whole_wheat_bagel.jpeg"
     },
     {
       "ProductID": 9,
@@ -1397,7 +1397,7 @@
       "IsVegan": false,
       "DateAdded": "10-04-2025",
       "LastUpdated": "03-05-2025",
-      "ImageURL": "../assets/images/bakery/raspberry_scone.jpg"
+      "ImageURL": "assets/images/bakery/raspberry_scone.jpg"
     },
     {
       "ProductID": 10,
@@ -1413,7 +1413,7 @@
       "IsVegan": false,
       "DateAdded": "15-04-2025",
       "LastUpdated": "01-05-2025",
-      "ImageURL": "../assets/images/bakery/oatmeal_raisin_jookie.jpg"
+      "ImageURL": "assets/images/bakery/oatmeal_raisin_jookie.jpg"
     },
     {
       "ProductID": 11,
@@ -1429,7 +1429,7 @@
       "IsVegan": false,
       "DateAdded": "20-04-2025",
       "LastUpdated": "02-05-2025",
-      "ImageURL": "../assets/images/bakery/gluten_free_brownie.jpeg"
+      "ImageURL": "assets/images/bakery/gluten_free_brownie.jpeg"
     },
     {
       "ProductID": 12,
@@ -1445,7 +1445,7 @@
       "IsVegan": false,
       "DateAdded": "25-04-2025",
       "LastUpdated": "03-05-2025",
-      "ImageURL": "../assets/images/bakery/lemon_poppy_seed_muffin.jpg"
+      "ImageURL": "assets/images/bakery/lemon_poppy_seed_muffin.jpg"
     },
     {
       "ProductID": 13,
@@ -1461,7 +1461,7 @@
       "IsVegan": true,
       "DateAdded": "30-04-2025",
       "LastUpdated": "01-05-2025",
-      "ImageURL": "../assets/images/bakery/vegan_chocolate_donut.jpg"
+      "ImageURL": "assets/images/bakery/vegan_chocolate_donut.jpg"
     },
     {
       "ProductID": 14,
@@ -1477,7 +1477,7 @@
       "IsVegan": false,
       "DateAdded": "01-05-2025",
       "LastUpdated": "02-05-2025",
-      "ImageURL": "../assets/images/bakery/multigrain_bread.webp"
+      "ImageURL": "assets/images/bakery/multigrain_bread.webp"
     },
     {
       "ProductID": 15,
@@ -1493,7 +1493,7 @@
       "IsVegan": false,
       "DateAdded": "02-05-2025",
       "LastUpdated": "03-05-2025",
-      "ImageURL": "../assets/images/bakery/pumpkin_spice_scone.jpg"
+      "ImageURL": "assets/images/bakery/pumpkin_spice_scone.jpg"
     }
   ]
 }
